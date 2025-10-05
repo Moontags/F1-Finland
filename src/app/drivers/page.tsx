@@ -1,5 +1,3 @@
-import Image from 'next/image';
-
 interface Driver {
   session_key: number;
   meeting_key: number;
@@ -15,23 +13,39 @@ interface Driver {
   name_acronym: string;
 }
 
-// 🧩 Fallback-kuvat – lisätään myöhemmin täydellinen lista 2025 kuskeista
-const driverImageFallbacks: Record<string, string> = {
-  'Franco Colapinto':
-    'https://media.formula1.com/image/upload/f_auto,c_limit,w_960,q_auto/content/dam/fom-website/drivers/2024Drivers/colapinto',
+// 🧩 F1 2025 kuljettajien kuvat - käytetään auton numeroa tunnistamiseen
+const driverImagesByNumber: Record<number, string> = {
+  1: '/max.webp',         // Max Verstappen
+  4: '/norris.webp',      // Lando Norris
+  5: '/bortoleto.webp',   // Gabriel Bortoleto
+  6: '/hadjar.webp',      // Isack Hadjar
+  10: '/gasly.webp',      // Pierre Gasly
+  12: '/antonelli.webp',  // Kimi Antonelli
+  14: '/alonso.webp',     // Fernando Alonso
+  16: '/leclerc.webp',    // Charles Leclerc
+  18: '/stroll.webp',     // Lance Stroll
+  22: '/tsunoda.webp',    // Yuki Tsunoda
+  23: '/albon.webp',      // Alexander Albon
+  27: '/hulkenberg.webp', // Nico Hulkenberg
+  30: '/lawson.webp',     // Liam Lawson
+  31: '/ocon.webp',       // Esteban Ocon
+  43: '/colapinto.webp',  // Franco Colapinto
+  44: '/hamilton.webp',   // Lewis Hamilton
+  55: '/sainz.webp',      // Carlos Sainz
+  63: '/russell.webp',    // George Russell
+  81: '/piastri.webp',    // Oscar Piastri
+  87: '/bearman.webp',    // Oliver Bearman
 };
 
 async function getDrivers() {
   try {
-    // 🔹 Hae viimeisin kauden 2025 sessio
     const sessionsRes = await fetch('https://api.openf1.org/v1/sessions?year=2025', {
-      next: { revalidate: 3600 }, // Cache 1h
+      next: { revalidate: 3600 },
     });
     const sessions = await sessionsRes.json();
     const latestSession = sessions[sessions.length - 1];
 
     if (!latestSession) return [];
-
 
     const driversRes = await fetch(
       `https://api.openf1.org/v1/drivers?session_key=${latestSession.session_key}`,
@@ -39,13 +53,12 @@ async function getDrivers() {
     );
     const drivers: Driver[] = await driversRes.json();
 
-    
     const uniqueDrivers = drivers.reduce((acc: Driver[], current: Driver) => {
       const exists = acc.find((item) => item.driver_number === current.driver_number);
       if (!exists) {
-        if (!current.headshot_url && driverImageFallbacks[current.full_name]) {
-          current.headshot_url = driverImageFallbacks[current.full_name];
-        }
+        // Käytä auton numeroa kuvien tunnistamiseen
+        current.headshot_url = driverImagesByNumber[current.driver_number] || '';
+        console.log(`#${current.driver_number} ${current.full_name} → ${current.headshot_url}`);
         return acc.concat([current]);
       }
       return acc;
@@ -78,21 +91,12 @@ export default async function DriversPage() {
               key={driver.driver_number}
               className="bg-dark-gray border border-light-gray rounded-2xl overflow-hidden hover:border-f1-red transition-all duration-300 shadow-md hover:shadow-xl"
             >
-              <div className="relative h-80 bg-mid-gray flex items-center justify-center">
+              <div className="relative h-80 w-full bg-mid-gray overflow-hidden">
                 {driver.headshot_url ? (
-                  <Image
-                    src={
-                      driver.headshot_url ||
-                      driverImageFallbacks[driver.full_name] ||
-                      '/images/default-driver.png'
-                    }
+                  <img
+                    src={driver.headshot_url}
                     alt={driver.full_name}
-                    width={400}
-                    height={400}
-                    className="rounded-2xl object-cover object-top w-full h-full transition-transform duration-300 hover:scale-105"
-                    quality={95}
-                    priority
-                    unoptimized={false}
+                    className="w-full h-full object-cover object-top transition-transform duration-300 hover:scale-105"
                   />
                 ) : (
                   <div className="flex items-center justify-center h-full text-6xl font-bold text-gray-600">
@@ -102,9 +106,7 @@ export default async function DriversPage() {
               </div>
               <div className="p-4">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-3xl font-bold text-f1-red">
-                    {driver.driver_number}
-                  </span>
+                  <span className="text-3xl font-bold text-f1-red">{driver.driver_number}</span>
                   <span className="text-sm text-gray-400">{driver.country_code}</span>
                 </div>
                 <h2 className="text-xl font-bold text-white mb-1">{driver.full_name}</h2>
