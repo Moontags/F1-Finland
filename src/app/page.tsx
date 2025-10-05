@@ -1,103 +1,155 @@
-import Image from "next/image";
+import Image from 'next/image';
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="text-center">
+        <h1 className="text-6xl font-bold mb-4">
+          <span className="text-f1-red">Formula 1</span>
+          <span className="text-white"> Finland</span>
+        </h1>
+        <p className="text-xl text-gray-400 mb-12">
+          Kaikki F1-data yhdessä paikassa
+        </p>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="bg-dark-gray border border-light-gray rounded-lg p-6 hover:border-f1-red transition-colors">
+            <h2 className="text-2xl font-bold mb-3 text-white">Sarjatilanne</h2>
+            <p className="text-gray-400 mb-4">
+              Seuraa kuljettajien ja tallien pisteitä
+            </p>
+            <a
+              href="/standings"
+              className="inline-block bg-f1-red text-white px-6 py-2 rounded hover:bg-red-700 transition-colors"
+            >
+              Näytä tilanne
+            </a>
+          </div>
+
+          <div className="bg-dark-gray border border-light-gray rounded-lg p-6 hover:border-f1-red transition-colors">
+            <h2 className="text-2xl font-bold mb-3 text-white">Kuljettajat</h2>
+            <p className="text-gray-400 mb-4">
+              Tutki F1-kuljettajien tietoja ja tilastoja
+            </p>
+            <a
+              href="/drivers"
+              className="inline-block bg-f1-red text-white px-6 py-2 rounded hover:bg-red-700 transition-colors"
+            >
+              Näytä kuljettajat
+            </a>
+          </div>
+
+          <div className="bg-dark-gray border border-light-gray rounded-lg p-6 hover:border-f1-red transition-colors">
+            <h2 className="text-2xl font-bold mb-3 text-white">Radat</h2>
+            <p className="text-gray-400 mb-4">
+              Selaa F1-ratoja ja kisatapahtumia
+            </p>
+            <a
+              href="/circuits"
+              className="inline-block bg-f1-red text-white px-6 py-2 rounded hover:bg-red-700 transition-colors"
+            >
+              Näytä radat
+            </a>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+       
+        
+        {/* Suomalaiset kuljettajat - chronological section */}
+        <section className="mt-16">
+          <h2 className="text-3xl font-bold text-center mb-6">Suomalaiset kuljettajat</h2>
+          <div className="space-y-6 max-w-4xl mx-auto">
+            {/* Keke Rosberg */}
+            <div className="bg-dark-gray border border-light-gray rounded-lg p-6 flex items-center space-x-4">
+              <div className="w-24 h-24 relative rounded-full overflow-hidden flex-shrink-0">
+                <Image src="/keke.jpeg" alt="Keke Rosberg" width={96} height={96} className="object-cover w-full h-full" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-white">Keke Rosberg (s. 1948)</h3>
+                <p className="text-gray-400 text-sm mb-2">Suomen ensimmäinen F1-maailmanmestari (1982). Voittoja ja palkintosijoja 1970- ja 1980-luvuilla.</p>
+                <ul className="text-gray-300 text-sm list-disc list-inside">
+                  <li>F1 maailmanmestari 1982</li>
+                  <li>Useita osakilpailuvoittoja</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Mika Häkkinen */}
+            <div className="bg-dark-gray border border-light-gray rounded-lg p-6 flex items-center space-x-4">
+              <div className="w-24 h-24 relative rounded-full overflow-hidden flex-shrink-0">
+                <Image src="/mika.jpeg" alt="Mika Häkkinen" width={96} height={96} className="object-cover w-full h-full" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-white">Mika Häkkinen (s. 1968)</h3>
+                <p className="text-gray-400 text-sm mb-2">Kaksi kertaa F1-maailmanmestari (1998, 1999) — tunnettu kovasta kilpailutahdostaan ja ikonisesta ajotyylistään.</p>
+                <ul className="text-gray-300 text-sm list-disc list-inside">
+                  <li>Maailmanmestari 1998, 1999</li>
+                  <li>Monet voitot McLarenilla</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Jukka Järvilehto */}
+            <div className="bg-dark-gray border border-light-gray rounded-lg p-6 flex items-center space-x-4">
+              <div className="w-24 h-24 relative rounded-full overflow-hidden flex-shrink-0">
+                <Image src="/jj.jpeg" alt="Jukka Järvilehto" width={96} height={96} className="object-cover w-full h-full" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-white">Jukka Järvilehto</h3>
+                <p className="text-gray-400 text-sm mb-2">Suomalainen tallipäällikkö ja pitkän linjan moottoriurheilutoimija — tunnettu kehittäjä ja tukija suomalaisille kuljettajille.</p>
+              </div>
+            </div>
+
+            {/* Kimi Räikkönen */}
+            <div className="bg-dark-gray border border-light-gray rounded-lg p-6 flex items-center space-x-4">
+              <div className="w-24 h-24 relative rounded-full overflow-hidden flex-shrink-0">
+                <Image src="/kimi.jpeg" alt="Kimi Räikkönen" width={96} height={96} className="object-cover w-full h-full" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-white">Kimi Räikkönen (s. 1979)</h3>
+                <p className="text-gray-400 text-sm mb-2">F1-maailmanmestari 2007, pitkä ura useilla talleilla ja yksi kaikkien aikojen suosituimmista kuljettajista.</p>
+                <ul className="text-gray-300 text-sm list-disc list-inside">
+                  <li>Maailmanmestari 2007</li>
+                  <li>Monet palkintosijat ja voitot</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Heikki Kovalainen */}
+            <div className="bg-dark-gray border border-light-gray rounded-lg p-6 flex items-center space-x-4">
+              <div className="w-24 h-24 relative rounded-full overflow-hidden flex-shrink-0">
+                <Image src="/heikki.jpeg" alt="Heikki Kovalainen" width={96} height={96} className="object-cover w-full h-full" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-white">Heikki Kovalainen (s. 1981)</h3>
+                <p className="text-gray-400 text-sm mb-2">Voittoisen kauden huippu: Grand Prix -voitto Monacossa 2008.</p>
+                <ul className="text-gray-300 text-sm list-disc list-inside">
+                  <li>F1-voitto: Magny-Cours / Monacon GP - 2008</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Valtteri Bottas */}
+            <div className="bg-dark-gray border border-light-gray rounded-lg p-6 flex items-center space-x-4">
+              <div className="w-24 h-24 relative rounded-full overflow-hidden flex-shrink-0">
+                <Image src="/valtteri.jpeg" alt="Valtteri Bottas" width={96} height={96} className="object-cover w-full h-full" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-white">Valtteri Bottas (s. 1989)</h3>
+                <p className="text-gray-400 text-sm mb-2">Menestynyt kuljettaja useilla F1-talleilla; monia podium-sijoituksia ja useita osakilpailuvoittoja.</p>
+                <ul className="text-gray-300 text-sm list-disc list-inside">
+                  <li>Useita osakilpailuvoittoja</li>
+                  <li>Monia podium-sijoituksia Mercedes- ja Alfa Romeo -aikoina</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div className="mt-12 text-sm text-gray-500">
+          Powered by <a href="https://openf1.org/" target="_blank" rel="noopener noreferrer" className="text-f1-red hover:underline">OpenF1 API</a>
+        </div>
+      </div>
     </div>
   );
 }
