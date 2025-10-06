@@ -13,6 +13,20 @@ export default function Home() {
         </p>
 
         <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+
+               <div className="bg-dark-gray border border-light-gray rounded-lg p-6 hover:border-f1-red transition-colors">
+            <h2 className="text-2xl font-bold mb-3 text-white">Kuljettajat</h2>
+            <p className="text-gray-400 mb-4">
+              Tutki F1-kuljettajien tietoja ja tilastoja
+            </p>
+            <a
+              href="/drivers"
+              className="inline-block bg-f1-red text-white px-6 py-2 rounded hover:bg-red-700 transition-colors"
+            >
+              Näytä kuljettajat
+            </a>
+          </div>
+          
           <div className="bg-dark-gray border border-light-gray rounded-lg p-6 hover:border-f1-red transition-colors">
             <h2 className="text-2xl font-bold mb-3 text-white">Sarjatilanne</h2>
             <p className="text-gray-400 mb-4">
@@ -26,18 +40,7 @@ export default function Home() {
             </a>
           </div>
 
-          <div className="bg-dark-gray border border-light-gray rounded-lg p-6 hover:border-f1-red transition-colors">
-            <h2 className="text-2xl font-bold mb-3 text-white">Kuljettajat</h2>
-            <p className="text-gray-400 mb-4">
-              Tutki F1-kuljettajien tietoja ja tilastoja
-            </p>
-            <a
-              href="/drivers"
-              className="inline-block bg-f1-red text-white px-6 py-2 rounded hover:bg-red-700 transition-colors"
-            >
-              Näytä kuljettajat
-            </a>
-          </div>
+     
 
           <div className="bg-dark-gray border border-light-gray rounded-lg p-6 hover:border-f1-red transition-colors">
             <h2 className="text-2xl font-bold mb-3 text-white">Radat</h2>

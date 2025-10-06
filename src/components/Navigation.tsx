@@ -10,8 +10,8 @@ export default function Navigation() {
 
   const navItems = [
     { name: 'Etusivu', href: '/' },
-    { name: 'Sarjatilanne', href: '/standings' },
     { name: 'Kuljettajat', href: '/drivers' },
+    { name: 'Sarjatilanne', href: '/standings' },
     { name: 'Radat', href: '/circuits' },
   ];
 
